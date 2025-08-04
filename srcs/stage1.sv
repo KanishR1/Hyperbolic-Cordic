@@ -27,8 +27,8 @@ module stage1 #(
     assign absZin = absval(Zin);
     assign comp = (absZin <= DWIDTH'(1 << (FRA_WIDTH - 2)));
 
-    functionalUnit xinst( .iData1(Xin), .iData2(Yin), .iSign(zSign), .compin(comp), .oData(Xout));
-    functionalUnit yinst( .iData1(Yin), .iData2(Xin), .iSign(zSign), .compin(comp), .oData(Yout));
+    functionalUnitS1 xinst( .iData1(Xin), .iData2(Yin), .iSign(zSign), .compin(comp), .oData(Xout));
+    functionalUnitS1 yinst( .iData1(Yin), .iData2(Xin), .iSign(zSign), .compin(comp), .oData(Yout));
     s1theta zinst (.iData(Zin), .iSign(zSign), .compin(comp), .zOut(Zout));
 
 endmodule // Stage 1
