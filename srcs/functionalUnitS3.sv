@@ -1,4 +1,4 @@
-module functionalUnitS2 #(
+module functionalUnitS3 #(
     parameter DWIDTH = IDWIDTH
 ) (
     // Input Signals
@@ -19,8 +19,8 @@ module functionalUnitS2 #(
 
 
 
-    s2cosh acosinst (.iData(iData1), .scomp(scomp), .coshOut(acosh));
-    s2sinh bsininst (.iData(iData2), .scomp(scomp), .sinhOut(bsinh));
+    s3cosh acosinst (.iData(iData1), .scomp(scomp), .coshOut(acosh));
+    s3sinh bsininst (.iData(iData2), .scomp(scomp), .sinhOut(bsinh));
 
 
     logic [DWIDTH-1 : 0] interVal [2];
@@ -32,4 +32,4 @@ module functionalUnitS2 #(
 
     assign oData = compin ? iData1 : mux1Out;
 
-endmodule // Functional Unit Stage 2
+endmodule // Functional Unit Stage 3

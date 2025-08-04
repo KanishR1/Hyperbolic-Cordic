@@ -15,7 +15,7 @@
 // This code is currently written for 16-bit accuracy.
 // 
 //////////////////////////////////////////////////////////////////////////////////
-module s2theta #(
+module s3theta #(
     parameter INT_WIDTH = I_INT_WIDTH,
     parameter FRA_WIDTH = I_FRA_WIDTH,
     parameter DWIDTH = IDWIDTH
@@ -38,8 +38,8 @@ module s2theta #(
     logic [DWIDTH-1 : 0] iData2;
     logic [DWIDTH-1 : 0] iData3;
 
-    assign iData2 = DWIDTH'({1'b0, {INT_WIDTH{1'b0}}, 2'b01, {(FRA_WIDTH > 2 ? FRA_WIDTH-2 : 0){1'b0}}});
-    assign iData3 = DWIDTH'({1'b0, {INT_WIDTH{1'b0}}, 3'b001, {(FRA_WIDTH > 3 ? FRA_WIDTH-3 : 0){1'b0}}});
+    assign iData2 = DWIDTH'({1'b0, {INT_WIDTH{1'b0}}, 4'b0001, {(FRA_WIDTH > 4 ? FRA_WIDTH-4 : 0){1'b0}}});
+    assign iData3 = DWIDTH'({1'b0, {INT_WIDTH{1'b0}}, 5'b00001, {(FRA_WIDTH > 5 ? FRA_WIDTH-5 : 0){1'b0}}});
 
 
     fixedAddSub #(.MODE(1)) subS1 (.iData1(iData), .iData2(iData2), .oData(microRot[0]));
@@ -57,5 +57,5 @@ module s2theta #(
 
     assign zOut = compin ? iData : mux3Out;
 
-endmodule // stage2 thetaOut
+endmodule // stage3 thetaOut
 
