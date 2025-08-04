@@ -13,15 +13,15 @@ package hyperCord_pkg;
             
             logic signbit;
             logic [IDWIDTH-2 : 0] onesComp;
-            logic [IDWIDTH-1 : 0] twosComp;
+            logic [IDWIDTH-2 : 0] twosComp;
             logic [IDWIDTH-1 : 0] absres;
 
             signbit = iData[IDWIDTH-1];
             onesComp = iData[IDWIDTH-2:0] ^ {(IDWIDTH-1){signbit}};
             twosComp = onesComp + {{(IDWIDTH-2){1'b0}},signbit};
 
-            assign absval = {1'b0,twosComp[IDWIDTH-2:0]};
-            return absval;
+            assign absres = {1'b0,twosComp[IDWIDTH-2:0]};
+            return absres;
         end
     endfunction
 

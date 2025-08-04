@@ -1,17 +1,17 @@
 `include "hyperCord_pkg.svh"
+/* verilator lint_off IMPORTSTAR */
 import hyperCord_pkg::*;
+/* verilator lint_on IMPORTSTAR */
 
-module functionalUnit #(
-    parameter INT_WIDTH = I_INT_WIDTH,
+
+module stage1 #(
     parameter FRA_WIDTH = I_FRA_WIDTH,
-    parameter SIGN_WIDTH = I_SIGN_WIDTH,
-    parameter DWIDTH = IDWIDTH,
-    parameter MODE = 0 // 0 - Add, 1 - Sub
+    parameter DWIDTH = IDWIDTH
 ) (
     // Input Signals
     input [DWIDTH-1 : 0] Xin,
     input [DWIDTH-1 : 0] Yin,
-    input [DWIDTH-1 : 0] Zin
+    input [DWIDTH-1 : 0] Zin,
 
     // Output Signal
     output logic [DWIDTH-1 : 0] Xout,
@@ -19,23 +19,18 @@ module functionalUnit #(
     output logic [DWIDTH-1 : 0] Zout
 );
 
-    // Finding the absolute value of theta
     logic zSign;
-    logic [DWIDTH-1 : 0] absZ;
-    
+    logic [DWIDTH-1 : 0] absZin;
+    logic comp;
+
     assign zSign = Zin[DWIDTH-1];
-    assign absZ = absval(Zin);
+    assign absZin = absval(Zin);
+    assign comp = (absZin <= DWIDTH'(1 << (FRA_WIDTH - 2)));
 
-    logic [DWIDTH-1 : 0] Ysinh;
-    logic [DWIDTH-1 : 0] Xsinh;
+    functionalUnit xinst( .iData1(Xin), .iData2(Yin), .iSign(zSign), .compin(comp), .oData(Xout));
+    functionalUnit yinst( .iData1(Yin), .iData2(Xin), .iSign(zSign), .compin(comp), .oData(Yout));
+    s1theta zinst (.iData(Zin), .iSign(zSign), .compin(comp), .zOut(Zout));
 
-    logic [DWIDTH-1 : 0] Ycosh;
-    logic [DWIDTH-1 : 0] Xcosh;
-
-    s1cosh xcosinst
-
-
-
-endmodule //Stage 1
+endmodule // Stage 1
 
 

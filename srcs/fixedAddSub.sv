@@ -1,10 +1,4 @@
-`include "hyperCord_pkg.svh"
-import hyperCord_pkg::*;
-
 module fixedAddSub #(
-    parameter INT_WIDTH = I_INT_WIDTH,
-    parameter FRA_WIDTH = I_FRA_WIDTH,
-    parameter SIGN_WIDTH = I_SIGN_WIDTH,
     parameter DWIDTH = IDWIDTH,
     parameter MODE = 0 // 0 - Add, 1 - Sub
 ) (
