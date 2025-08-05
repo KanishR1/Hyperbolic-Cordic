@@ -20,7 +20,7 @@ package hyperCord_pkg;
             onesComp = iData[IDWIDTH-2:0] ^ {(IDWIDTH-1){signbit}};
             twosComp = onesComp + {{(IDWIDTH-2){1'b0}},signbit};
 
-            assign absres = {1'b0,twosComp[IDWIDTH-2:0]};
+            absres = {1'b0,twosComp[IDWIDTH-2:0]};
             return absres;
         end
     endfunction
