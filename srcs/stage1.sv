@@ -1,9 +1,3 @@
-`include "hyperCord_pkg.svh"
-/* verilator lint_off IMPORTSTAR */
-import hyperCord_pkg::*;
-/* verilator lint_on IMPORTSTAR */
-
-
 module stage1 #(
     parameter FRA_WIDTH = I_FRA_WIDTH,
     parameter DWIDTH = IDWIDTH
