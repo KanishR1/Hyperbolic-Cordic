@@ -56,7 +56,7 @@ module hyperCord #(
     logic [DWIDTH-1 : 0] Zcomb[3];
 
     for (genvar i=0; i<4; i++) begin : gen_stages
-        always_ff @( clk, negedge aresetn ) begin
+        always_ff @(posedge clk, negedge aresetn ) begin
             if(!aresetn) begin
                 Xstage[i] <= '0;
                 Ystage [i] <= '0;
@@ -75,7 +75,7 @@ module hyperCord #(
         end
     end
 
-    always_ff @( clk, negedge aresetn ) begin
+    always_ff @( posedge clk, negedge aresetn ) begin
         if(!aresetn) begin
             Xstage[4] <= '0;
             Ystage [4] <= '0;
