@@ -1,7 +1,7 @@
 package hyperCord_pkg;
 
-    parameter int I_INT_WIDTH = 5;
-    parameter int I_FRA_WIDTH = 2;
+    parameter int I_INT_WIDTH = 11;
+    parameter int I_FRA_WIDTH = 4;
     parameter int I_SIGN_WIDTH = 1;
 
     // Inputs are in 2's complement format
