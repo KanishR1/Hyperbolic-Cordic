@@ -32,7 +32,7 @@ module s2sinh #(
     logic [DWIDTH-1 : 0] yshift4;
 
     /* verilator lint_off UNOPTFLAT */
-    logic [DWIDTH-1 : 0] interVal [5];
+    logic [DWIDTH-1 : 0] interVal [6];
     /* verilator lint_on UNOPTFLAT */
 
     assign yshift9 = iData >>> 9;
@@ -47,8 +47,8 @@ module s2sinh #(
     fixedAddSub #(.MODE(0)) add3 (.iData1(interVal[0]), .iData2(interVal[3]), .oData(interVal[4]));
 
     
-    assign interVal[4] = interVal[3] >>> 2;
-    assign sinhOut = scomp ? interVal[4] : interVal[1];
+    assign interVal[5] = interVal[3] >>> 2;
+    assign sinhOut = scomp ? interVal[5] : interVal[1];
 
 endmodule // stage2 sinh
 
